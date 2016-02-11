@@ -35,6 +35,11 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  # Clean database between each test
+  gem 'database_cleaner', '1.5.1'
+end
+
 # ActiveModel serialization
 gem 'active_model_serializers', '0.10.0.rc4'
 
