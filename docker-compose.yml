@@ -5,6 +5,7 @@ rails:
     MYSQL_USERNAME: root
     MYSQL_PASSWORD: root
     MYSQL_DATABASE: anrop
+    MYSQL_TEST_DATABASE: anrop_test
   links:
     - mysql
   ports:
