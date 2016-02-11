@@ -25,6 +25,9 @@ group :development, :test do
 
   # rspec for testing
   gem 'rspec-rails', '3.5.0.beta1'
+
+  # factory girl for generating models during testing
+  gem 'factory_girl_rails', '4.6.0'
 end
 
 group :development do
