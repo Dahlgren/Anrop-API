@@ -5,7 +5,7 @@ describe UsersController do
     it "returns users" do
       user = create(:user)
       get :index
-      expect(response.body).to eq([user].to_json)
+      expect(response.body).to eq(ActiveModel::SerializableResource.new([user]).to_json)
     end
   end
 
@@ -13,7 +13,7 @@ describe UsersController do
     it "returns user" do
       user = create(:user)
       get :show, params: { id: user.id }
-      expect(response.body).to eq(user.to_json)
+      expect(response.body).to eq(ActiveModel::SerializableResource.new(user).to_json)
     end
   end
 end
