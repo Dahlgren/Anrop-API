@@ -1,19 +1,21 @@
 require 'rails_helper'
 
 describe UsersController do
+  before(:each) do
+    @user = create(:user)
+  end
+
   describe "GET index" do
     it "returns users" do
-      user = create(:user)
       get :index
-      expect(response.body).to eq(ActiveModel::SerializableResource.new([user]).to_json)
+      expect(response.body).to eq(ActiveModel::SerializableResource.new([@user]).to_json)
     end
   end
 
   describe "GET show" do
     it "returns user" do
-      user = create(:user)
-      get :show, params: { id: user.id }
-      expect(response.body).to eq(ActiveModel::SerializableResource.new(user).to_json)
+      get :show, params: { id: @user.id }
+      expect(response.body).to eq(ActiveModel::SerializableResource.new(@user).to_json)
     end
   end
 end
