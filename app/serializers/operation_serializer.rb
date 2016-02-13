@@ -1,7 +1,7 @@
 class OperationSerializer < ActiveModel::Serializer
   attribute :id
-  attribute :operation_title
-  attribute :operation_text
+  attribute :title
+  attribute :text
 
   belongs_to :author
 end

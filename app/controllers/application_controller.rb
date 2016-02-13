@@ -16,7 +16,7 @@ class ApplicationController < ActionController::API
     return unless expiration.to_i > Time.now.to_i
 
     # Try to find user
-    user = User.find_by(user_id: user_id)
+    user = User.find_by(id: user_id)
     return unless user
 
     # Match hash in cookie with computed hash for user
