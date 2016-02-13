@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
-  resources :operations, only: [:index, :show]
+  resources :operations
   resources :users, only: [:index, :show]
 end

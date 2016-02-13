@@ -1,5 +1,5 @@
 class OperationsController < ApplicationController
-  before_action :set_operation, only: [:show]
+  before_action :set_operation, only: [:show, :update, :destroy]
 
   # GET /operations
   def index
@@ -13,9 +13,50 @@ class OperationsController < ApplicationController
     render json: @operation
   end
 
+  # POST /operations
+  def create
+    @operation = Operation.new(operation_params)
+    @operation.operation_author = current_user.id
+
+    if @operation.save
+      render json: @operation, status: :created, location: @operation
+    else
+      render json: @operation.errors, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /operations/1
+  def update
+    if @operation.update(operation_params)
+      render json: @operation
+    else
+      render json: @operation.errors, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /operations/1
+  def destroy
+    @operation.destroy
+
+    head :no_content
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_operation
       @operation = Operation.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def operation_params
+      params.require(:operation).permit(
+        :title,
+        :text,
+        :image,
+        :start,
+        :hidden,
+        :locked,
+        :thread_id,
+      )
     end
 end
