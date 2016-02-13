@@ -4,6 +4,12 @@ class ApplicationController < ActionController::API
 
   before_action :authenticate_user
 
+  helper_method :current_user
+
+  def current_user
+    @current_user
+  end
+
   def authenticate_user
     @current_user = nil
 
