@@ -5,6 +5,8 @@ class User < ApplicationRecord
   alias_attribute :algorithm, :user_algo
   alias_attribute :salt, :user_salt
 
+  has_many :shouts, foreign_key: "shout_name"
+
   ROLES = {
     operations: '7',
   }
