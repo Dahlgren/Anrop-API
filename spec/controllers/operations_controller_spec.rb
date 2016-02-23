@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe OperationsController do
   before(:each) do
-    @operation = create(:operation)
+    author = create(:user, :operation_maker)
+    allow(subject).to receive(:current_user).and_return(author)
+
+    @operation = create(:operation, author_id: author.id)
   end
 
   describe "GET index" do
@@ -21,9 +24,6 @@ describe OperationsController do
 
   describe "POST create" do
     it "creates operation" do
-      author = create(:user)
-      subject.stub(:current_user) { author }
-
       new_operation = attributes_for(:operation)
       post :create, params: { operation: new_operation }
       expect(response.status).to eq(201)

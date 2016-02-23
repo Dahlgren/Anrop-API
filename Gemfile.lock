@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/Dahlgren/cancancan.git
+  revision: d52b6591d626df1e72d0dbd25bec4b19e42a4c34
+  branch: rails_5
+  specs:
+    cancancan (1.13.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -143,6 +150,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (= 0.10.0.rc4)
   byebug
+  cancancan!
   database_cleaner (= 1.5.1)
   factory_girl_rails (= 4.6.0)
   mysql2

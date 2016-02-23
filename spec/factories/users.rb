@@ -18,5 +18,9 @@ FactoryGirl.define do
     # User data
     user_birthdate { Date.today }
     user_sig ''
+
+    trait :operation_maker do
+      user_groups '.7'
+    end
   end
 end

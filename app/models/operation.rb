@@ -6,6 +6,7 @@ class Operation < ApplicationRecord
   alias_attribute :start, :operation_datetime
   alias_attribute :hidden, :operation_hidden
   alias_attribute :locked, :operation_locked
+  alias_attribute :author_id, :operation_author
   alias_attribute :updated_at, :operation_updated_at
 
   before_save :set_updated_at
