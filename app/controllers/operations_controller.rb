@@ -1,10 +1,8 @@
 class OperationsController < ApplicationController
-  before_action :set_operation, only: [:show, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /operations
   def index
-    @operations = Operation.all
-
     render json: @operations
   end
 
@@ -15,7 +13,6 @@ class OperationsController < ApplicationController
 
   # POST /operations
   def create
-    @operation = Operation.new(operation_params)
     @operation.operation_author = current_user.id
 
     if @operation.save
@@ -42,11 +39,6 @@ class OperationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_operation
-      @operation = Operation.find(params[:id])
-    end
-
     # Only allow a trusted parameter "white list" through.
     def operation_params
       params.require(:operation).permit(

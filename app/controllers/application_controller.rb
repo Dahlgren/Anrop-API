@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::API
   include ActionController::Helpers
   include ActionController::Cookies
+  include CanCan::ControllerAdditions
+
+  check_authorization
 
   before_action :authenticate_user
 
