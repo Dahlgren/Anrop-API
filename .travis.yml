@@ -1,0 +1,12 @@
+sudo: required
+install: true
+
+services:
+  - docker
+
+script:
+  - docker-compose up -d
+  - docker-compose run rails rake db:create
+  - docker-compose run rails rspec
+after_script:
+  - docker-compose stop
