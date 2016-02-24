@@ -1,4 +1,4 @@
-class OperationSerializer < ActiveModel::Serializer
+class Operations::OperationSerializer < ActiveModel::Serializer
   attribute :id
   attribute :title
   attribute :text

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe OperationsController do
+describe Operations::OperationsController do
   before(:each) do
     author = create(:user, :operation_maker)
     allow(subject).to receive(:current_user).and_return(author)
@@ -87,7 +87,7 @@ describe OperationsController do
     it "deletes operation" do
       delete :destroy, params: { id: @operation.id }
       expect(response.status).to eq(204)
-      expect(Operation.all).to eq([])
+      expect(Operations::Operation.all).to eq([])
     end
   end
 end

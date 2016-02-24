@@ -1,4 +1,4 @@
-class Operation < ApplicationRecord
+class Operations::Operation < ApplicationRecord
   alias_attribute :id, :operation_id
   alias_attribute :title, :operation_title
   alias_attribute :text, :operation_text
