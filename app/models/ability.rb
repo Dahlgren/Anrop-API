@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     operations(user)
+    shouts(user)
     users(user)
   end
 
@@ -13,6 +14,16 @@ class Ability
       can :create, Operation if user.has_role?(:operations)
       can :manage, Operation, author_id: user.id
       can :manage, Operation if user.superadmin?
+    end
+  end
+
+  def shouts(user)
+    can :read, Shout
+
+    if user
+      can :create, Shout
+      can :manage, Shout, user_id: user.id.to_s
+      can :manage, Shout if user.admin?
     end
   end
 
