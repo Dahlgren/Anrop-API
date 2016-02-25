@@ -1,6 +1,6 @@
 require "cancan/matchers"
 
-describe "Operation" do
+describe "Operations::Operation" do
   describe "abilities" do
     subject(:ability){ Ability.new(user) }
 
@@ -18,7 +18,7 @@ describe "Operation" do
       it{ should_not be_able_to(:read, create(:operation, hidden: true)) }
 
       it{ should be_able_to(:read, create(:operation, author_id: user.id)) }
-      it{ should be_able_to(:create, Operation.new) }
+      it{ should be_able_to(:create, build(:operation)) }
       it{ should be_able_to(:update, create(:operation, author_id: user.id)) }
       it{ should be_able_to(:destroy, create(:operation, author_id: user.id)) }
     end

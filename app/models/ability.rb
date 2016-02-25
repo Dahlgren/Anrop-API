@@ -8,12 +8,12 @@ class Ability
   end
 
   def operations(user)
-    can :read, Operation, hidden: 0
+    can :read, Operations::Operation, hidden: 0
 
     if user
-      can :create, Operation if user.has_role?(:operations)
-      can :manage, Operation, author_id: user.id
-      can :manage, Operation if user.superadmin?
+      can :create, Operations::Operation if user.has_role?(:operations)
+      can :manage, Operations::Operation, author_id: user.id
+      can :manage, Operations::Operation if user.superadmin?
     end
   end
 

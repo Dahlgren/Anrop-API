@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :operation do
+  factory :operation, class: Operations::Operation  do
     sequence(:title) { |n| "Operation_#{n}" }
     text 'Awesome Operation'
     start { DateTime.now }

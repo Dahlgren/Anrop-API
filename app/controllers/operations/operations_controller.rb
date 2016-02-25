@@ -1,4 +1,4 @@
-class OperationsController < ApplicationController
+class Operations::OperationsController < ApplicationController
   load_and_authorize_resource
 
   # GET /operations
@@ -16,7 +16,7 @@ class OperationsController < ApplicationController
     @operation.operation_author = current_user.id
 
     if @operation.save
-      render json: @operation, status: :created, location: @operation
+      render json: @operation, status: :created
     else
       render json: @operation.errors, status: :unprocessable_entity
     end
