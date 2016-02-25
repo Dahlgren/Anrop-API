@@ -9,11 +9,13 @@ class Operations::Operation < ApplicationRecord
   alias_attribute :author_id, :operation_author
   alias_attribute :updated_at, :operation_updated_at
 
+  belongs_to :author, class_name: 'User', foreign_key: 'operation_author'
+  has_many :addons
+  has_many :play_with_sixes
+
   before_save :set_updated_at
 
   def set_updated_at
     self.updated_at = Time.now.utc
   end
-
-  belongs_to :author, class_name: "User", foreign_key: 'operation_author'
 end
