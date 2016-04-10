@@ -11,6 +11,8 @@ class Shout < ApplicationRecord
 
   before_save :set_created_at
 
+  default_scope { includes(:user) }
+
   def set_created_at
     self.created_at = Time.now.utc
   end
