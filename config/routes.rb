@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   scope module: 'operations' do
     resources :operations do
       resources :addons
-      resources :groups
+      resources :groups do
+        resources :slots
+      end
       resources :play_with_six
     end
   end

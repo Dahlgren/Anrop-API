@@ -13,6 +13,7 @@ class Operations::Operation < ApplicationRecord
   has_many :addons
   has_many :groups
   has_many :play_with_sixes
+  has_many :slots, through: :groups
 
   before_save :set_updated_at
 
