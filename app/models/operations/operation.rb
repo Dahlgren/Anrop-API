@@ -18,6 +18,7 @@ class Operations::Operation < ApplicationRecord
   before_save :set_updated_at
 
   default_scope { includes(:author) }
+  scope :upcoming, -> { where('operation_datetime >= ?', DateTime.now.beginning_of_day) }
 
   def set_updated_at
     self.updated_at = Time.now.utc

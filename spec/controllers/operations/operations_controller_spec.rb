@@ -15,6 +15,17 @@ describe Operations::OperationsController do
     end
   end
 
+  describe "GET upcoming" do
+    before(:each) do
+      @old_operation = create(:operation, start: DateTime.now.yesterday)
+    end
+
+    it "returns upcoming operations" do
+      get :upcoming
+      expect(response.body).to eq(ActiveModel::SerializableResource.new([@operation]).to_json)
+    end
+  end
+
   describe "GET show" do
     it "returns operation" do
       get :show, params: { id: @operation.id }
