@@ -4,7 +4,7 @@ class Operations::GroupsController < ApplicationController
 
   # GET /groups
   def index
-    render json: @groups
+    render json: @groups.order(:order)
   end
 
   # GET /groups/1
