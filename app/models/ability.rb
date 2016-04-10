@@ -10,6 +10,7 @@ class Ability
   def operations(user)
     can :read, Operations::Operation, hidden: 0
     can :read, Operations::Addon, operation: { operation_hidden: 0 }
+    can :read, Operations::Group, operation: { operation_hidden: 0 }
     can :read, Operations::PlayWithSix, operation: { operation_hidden: 0 }
 
     if user
@@ -19,6 +20,9 @@ class Ability
 
       can :manage, Operations::Addon, operation: { operation_author: user.id }
       can :manage, Operations::Addon if user.superadmin?
+
+      can :manage, Operations::Group, operation: { operation_author: user.id }
+      can :manage, Operations::Group if user.superadmin?
 
       can :manage, Operations::PlayWithSix, operation: { operation_author: user.id }
       can :manage, Operations::PlayWithSix if user.superadmin?
