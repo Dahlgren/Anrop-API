@@ -3,12 +3,12 @@ class Operations::OperationsController < ApplicationController
 
   # GET /operations
   def index
-    render json: @operations
+    render json: @operations.order(start: :desc)
   end
 
   # GET /operations/upcoming
   def upcoming
-    render json: @operations.upcoming
+    render json: @operations.upcoming.order(start: :asc)
   end
 
   # GET /operations/1
