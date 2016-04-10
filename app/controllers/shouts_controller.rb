@@ -3,7 +3,7 @@ class ShoutsController < ApplicationController
 
   # GET /shouts
   def index
-    render json: @shouts
+    render json: @shouts.order(created_at: :desc).limit(20)
   end
 
   # GET /shouts/1
