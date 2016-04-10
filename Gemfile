@@ -35,6 +35,11 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  # New Relic logging
+  gem 'newrelic_rpm', '3.15.1.316'
+end
+
 group :test do
   # Clean database between each test
   gem 'database_cleaner', '1.5.1'
