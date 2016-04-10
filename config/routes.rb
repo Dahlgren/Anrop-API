@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
   scope module: 'operations' do
-    resources :operations
+    resources :operations do
+      resources :addons
+      resources :play_with_six
+    end
   end
 
   resources :shouts
