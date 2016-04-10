@@ -15,6 +15,8 @@ class Operations::Operation < ApplicationRecord
 
   before_save :set_updated_at
 
+  default_scope { includes(:author) }
+
   def set_updated_at
     self.updated_at = Time.now.utc
   end
