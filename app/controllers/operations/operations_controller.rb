@@ -6,6 +6,11 @@ class Operations::OperationsController < ApplicationController
     render json: @operations
   end
 
+  # GET /operations/upcoming
+  def upcoming
+    render json: @operations.upcoming
+  end
+
   # GET /operations/1
   def show
     render json: @operation
