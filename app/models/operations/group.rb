@@ -7,6 +7,7 @@ class Operations::Group < ApplicationRecord
   alias_attribute :updated_at, :group_updated_at
 
   belongs_to :operation
+  has_many :slots
 
   before_save :default_values
   before_save :set_updated_at
