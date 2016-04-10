@@ -9,6 +9,7 @@ class Ability
 
   def operations(user)
     can :read, Operations::Operation, hidden: 0
+    can :upcoming, Operations::Operation, hidden: 0
     can :read, Operations::Addon, operation: { operation_hidden: 0 }
     can :read, Operations::Group, operation: { operation_hidden: 0 }
     can :read, Operations::PlayWithSix, operation: { operation_hidden: 0 }
