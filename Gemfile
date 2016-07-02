@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.0.beta2'
+gem 'rails', '5.0.0'
 # Use mysql2 as the database for Active Record
 gem 'mysql2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,10 +24,10 @@ group :development, :test do
   gem 'byebug'
 
   # rspec for testing
-  gem 'rspec-rails', '3.5.0.beta1'
+  gem 'rspec-rails', '3.5.0'
 
   # factory girl for generating models during testing
-  gem 'factory_girl_rails', '4.6.0'
+  gem 'factory_girl_rails', '4.7.0'
 end
 
 group :development do
@@ -37,19 +37,19 @@ end
 
 group :production do
   # New Relic logging
-  gem 'newrelic_rpm', '3.15.1.316'
+  gem 'newrelic_rpm'
 end
 
 group :test do
   # Clean database between each test
-  gem 'database_cleaner', '1.5.1'
+  gem 'database_cleaner', '1.5.3'
 end
 
 # ActiveModel serialization
-gem 'active_model_serializers', '0.10.0.rc4'
+gem 'active_model_serializers', '0.10.1'
 
 # CanCanCan for Authorization
-gem 'cancancan', github: 'Dahlgren/cancancan', branch: 'rails_5'
+gem 'cancancan', '1.15.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
