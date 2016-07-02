@@ -13,14 +13,14 @@ describe Operations::SlotsController do
   describe "GET index" do
     it "returns slots" do
       get :index, params: { operation_id: @operation.id, group_id: @group.id }
-      expect(response.body).to eq(ActiveModel::SerializableResource.new([@slot]).to_json)
+      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@slot]).to_json)
     end
   end
 
   describe "GET show" do
     it "returns slot" do
       get :show, params: { operation_id: @operation.id, group_id: @group.id, id: @slot.id }
-      expect(response.body).to eq(ActiveModel::SerializableResource.new(@slot).to_json)
+      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@slot).to_json)
     end
   end
 
@@ -43,14 +43,14 @@ describe Operations::SlotsController do
       @slot.name = "New Name"
       patch :update, params: { operation_id: @operation.id, group_id: @group.id, id: @slot.id, slot: { name: @slot.name } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModel::SerializableResource.new(@slot).to_json)
+      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@slot).to_json)
     end
 
     it "updates slot with new order" do
       @slot.order = -1
       patch :update, params: { operation_id: @operation.id, group_id: @group.id, id: @slot.id, slot: { order: -1 } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModel::SerializableResource.new(@slot).to_json)
+      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@slot).to_json)
     end
   end
 
