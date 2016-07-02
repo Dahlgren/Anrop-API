@@ -6,6 +6,9 @@ class Operations::OperationSerializer < ActiveModel::Serializer
   attribute :start
   attribute :hidden
   attribute :locked
+  attribute :participating
+  attribute :number_of_participants
+  attribute :number_of_slots
 
   belongs_to :author
 
@@ -15,5 +18,9 @@ class Operations::OperationSerializer < ActiveModel::Serializer
 
   def locked
     object.locked == 1
+  end
+
+  def participating
+    object.participating? scope
   end
 end

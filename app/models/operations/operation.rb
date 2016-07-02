@@ -23,4 +23,17 @@ class Operations::Operation < ApplicationRecord
   def set_updated_at
     self.updated_at = Time.now.utc
   end
+
+  def number_of_participants
+    self.slots.where.not(user_id: nil).size
+  end
+
+  def number_of_slots
+    self.slots.size
+  end
+
+  def participating?(user)
+    return self.slots.where(user: user).size > 0 if user
+    false
+  end
 end
