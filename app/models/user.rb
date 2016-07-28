@@ -3,6 +3,7 @@ class User < ApplicationRecord
   alias_attribute :name, :user_name
   alias_attribute :email, :user_email
   alias_attribute :algorithm, :user_algo
+  alias_attribute :password, :user_password
   alias_attribute :salt, :user_salt
   alias_attribute :avatar, :user_avatar
 
@@ -27,6 +28,15 @@ class User < ApplicationRecord
     data = "#{self.user_id}#{expiration.to_s}"
     key = OpenSSL::HMAC.hexdigest(digest, self.salt, data)
     OpenSSL::HMAC.hexdigest(digest, key, data)
+  end
+
+  def hash_password(password)
+    if self.algorithm == 'md5'
+      Digest::MD5.hexdigest(Digest::MD5.hexdigest(password))
+    else
+      digest = OpenSSL::Digest.new(self.algorithm)
+      OpenSSL::HMAC.hexdigest(digest, self.salt, password)
+    end
   end
 
   def has_role?(role)
