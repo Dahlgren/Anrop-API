@@ -7,7 +7,12 @@ class ApplicationController < ActionController::API
 
   before_action :authenticate_user
 
+  helper_method :current_token
   helper_method :current_user
+
+  def current_token
+    cookies[:fusionGppEM_user]
+  end
 
   def current_user
     @current_user
@@ -16,12 +21,12 @@ class ApplicationController < ActionController::API
   def authenticate_user
     @current_user = nil
 
-    # Try to read user cookie
-    user_cookie = cookies[:fusionGppEM_user]
-    return unless user_cookie
+    # Try to read user token
+    token = current_token
+    return unless token
 
     # Make sure expiration is still valid
-    user_id, expiration, hash = user_cookie.split('.')
+    user_id, expiration, hash = token.split('.')
     return unless expiration.to_i > Time.now.to_i
 
     # Try to find user

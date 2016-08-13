@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :sessions, only: [:index, :create]
   resources :shouts
   resources :users, only: [:index, :show] do
     scope module: :users do
