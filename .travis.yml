@@ -6,6 +6,7 @@ services:
 
 script:
   - docker-compose up -d
+  - while ! mysqladmin ping -h 127.0.0.1 -u root --silent; do sleep 1; echo "Waiting for MySQL to come up..."; done
   - docker-compose run rails rake db:create
   - docker-compose run rails rspec
 after_script:
