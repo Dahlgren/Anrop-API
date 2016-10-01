@@ -1,8 +1,10 @@
 class Users::ShoutsController < ApplicationController
+  load_and_authorize_resource :user
+  load_and_authorize_resource :shout, through: :user
+
   # GET /shouts
   def index
-    @user = User.find(params[:user_id])
-    @shouts = @user.shouts
+    @shouts = @shouts.order(created_at: :desc).limit(20)
     render json: @shouts
   end
 end
