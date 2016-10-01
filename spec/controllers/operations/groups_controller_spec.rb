@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Operations::GroupsController do
   before(:each) do
     author = create(:user, :operation_maker)
-    allow(subject).to receive(:current_user).and_return(author)
-
+    set_current_user(author)
+    
     @operation = create(:operation, author_id: author.id)
     @group = create(:group, operation_id: @operation.id)
   end

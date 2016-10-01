@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Helpers
-  include ActionController::Cookies
+  include ActionController::HttpAuthentication::Token::ControllerMethods
   include CanCan::ControllerAdditions
 
   check_authorization
@@ -11,7 +11,9 @@ class ApplicationController < ActionController::API
   helper_method :current_user
 
   def current_token
-    cookies[:fusionGppEM_user]
+    authenticate_with_http_token do |token, options|
+      token
+    end
   end
 
   def current_user
