@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :create]
   resources :shouts
+
+  namespace :users do
+    resources :search, only: :index
+  end
   resources :users, only: [:index, :show] do
     scope module: :users do
       resources :shouts, only: :index

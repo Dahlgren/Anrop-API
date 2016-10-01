@@ -7,6 +7,8 @@ class User < ApplicationRecord
   alias_attribute :salt, :user_salt
   alias_attribute :avatar, :user_avatar
 
+  scope :search, -> (name) { where("lower(user_name) like ?", "%#{name.downcase}%")}
+
   has_many :shouts, foreign_key: "shout_name"
 
   AVATAR_BASE_URL = "https://www.anrop.se/images/avatars/"
