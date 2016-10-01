@@ -3,7 +3,7 @@ require 'rails_helper'
 describe ShoutsController do
   before(:each) do
     @user = create(:user)
-    allow(subject).to receive(:current_user).and_return(@user)
+    set_current_user(@user)
 
     @shout = create(:shout, user_id: @user.id)
   end

@@ -16,8 +16,8 @@ describe SessionsController do
       session.token = token
       session.user = @user
 
-      allow(subject).to receive(:current_token).and_return(token)
-      allow(subject).to receive(:current_user).and_return(@user)
+      set_current_token(token)
+      set_current_user(@user)
 
       get :index
       expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(session).to_json)
