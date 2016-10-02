@@ -44,6 +44,7 @@ class Operations::SlotsController < ApplicationController
       params.require(:slot).permit(
         :name,
         :order,
+        :user_id,
       )
     end
 end

@@ -52,6 +52,14 @@ describe Operations::SlotsController do
       expect(response.status).to eq(200)
       expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@slot).to_json)
     end
+
+    it "updates slot with new user" do
+      user = create(:user)
+      @slot.user = user
+      patch :update, params: { operation_id: @operation.id, group_id: @group.id, id: @slot.id, slot: { user_id: user.id } }
+      expect(response.status).to eq(200)
+      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@slot).to_json)
+    end
   end
 
   describe "DELETE destroy" do
