@@ -1,5 +1,6 @@
 class Operations::OperationSerializer < ActiveModel::Serializer
   attribute :id
+  attribute :thread_id
   attribute :title
   attribute :text
   attribute :image
