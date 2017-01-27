@@ -1,13 +1,19 @@
-sudo: required
-install: true
+language: ruby
+rvm:
+  - 2.3.0
+
+cache: bundler
 
 services:
-  - docker
+  - mysql
+
+env:
+  MYSQL_HOST: localhost
+  MYSQL_USERNAME: travis
+  MYSQL_PASSWORD:
+  MYSQL_DATABASE: anrop
+  MYSQL_TEST_DATABASE: anrop_test
 
 script:
-  - docker-compose up -d
-  - while ! mysqladmin ping -h 127.0.0.1 -u root --silent; do sleep 1; echo "Waiting for MySQL to come up..."; done
-  - docker-compose run rails rake db:create
-  - docker-compose run rails rspec
-after_script:
-  - docker-compose stop
+  - bundle exec rails db:setup
+  - bundle exec rspec
