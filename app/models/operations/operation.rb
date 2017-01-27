@@ -25,7 +25,11 @@ class Operations::Operation < ApplicationRecord
   end
 
   def number_of_participants
-    self.slots.where.not(user_id: nil).size
+    if (self.slots.loaded?)
+      self.slots.select{|slot| slot.user_id.nil?}.size
+    else
+      self.slots.where.not(user_id: nil).size
+    end
   end
 
   def number_of_slots
