@@ -26,7 +26,7 @@ class Operations::Operation < ApplicationRecord
 
   def number_of_participants
     if (self.slots.loaded?)
-      self.slots.select{|slot| slot.user_id.nil?}.size
+      self.slots.select{|slot| !slot.user_id.nil?}.size
     else
       self.slots.where.not(user_id: nil).size
     end
