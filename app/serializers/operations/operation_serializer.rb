@@ -1,4 +1,4 @@
-class Operations::OperationSerializer < ActiveModel::Serializer
+class Operations::OperationSerializer < ApplicationSerializer
   attribute :id
   attribute :thread_id
   attribute :title
@@ -23,5 +23,9 @@ class Operations::OperationSerializer < ActiveModel::Serializer
 
   def participating
     object.participating? scope
+  end
+
+  def start
+    local_to_utc(object.start)
   end
 end

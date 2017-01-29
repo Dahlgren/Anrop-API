@@ -26,5 +26,10 @@ module Anrop
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Legacy database has local time zone in Europe/Stockholm
+    config.time_zone = 'Stockholm'
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
   end
 end

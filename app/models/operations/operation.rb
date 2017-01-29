@@ -16,12 +16,17 @@ class Operations::Operation < ApplicationRecord
   has_many :slots, through: :groups
 
   before_save :set_updated_at
+  before_save :fix_start, if: ->(obj){ obj.start.present? and obj.start_changed? }
 
   default_scope { includes(:author) }
   scope :upcoming, -> { where('operation_datetime >= ?', DateTime.now.beginning_of_day) }
 
   def set_updated_at
-    self.updated_at = Time.now.utc
+    self.updated_at = utc_to_local(Time.now.utc)
+  end
+
+  def fix_start
+    self.start = utc_to_local(self.start)
   end
 
   def number_of_participants
