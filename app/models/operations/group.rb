@@ -17,6 +17,6 @@ class Operations::Group < ApplicationRecord
   end
 
   def set_updated_at
-    self.updated_at = Time.now.utc
+    self.updated_at = utc_to_local(Time.now.utc)
   end
 end

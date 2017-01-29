@@ -105,8 +105,11 @@ describe Operations::OperationsController do
       end
 
       it "updates operation with new start" do
-        @operation.start = DateTime.now
-        patch :update, params: { id: @operation.id, operation: { start: @operation.start } }
+        new_start = DateTime.now
+        operation = @operation.dup
+        operation.id = @operation.id
+        operation.start = new_start
+        patch :update, params: { id: @operation.id, operation: { start: new_start } }
         expect(response.status).to eq(200)
         expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
       end
