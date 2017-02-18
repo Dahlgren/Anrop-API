@@ -8,7 +8,12 @@ class Operations::OperationsController < ApplicationController
 
   # GET /operations/upcoming
   def upcoming
-    render json: @operations.includes(:slots).upcoming.order(start: :asc)
+    render json: @operations.includes(:slots).upcoming.published.order(start: :asc)
+  end
+
+  # GET /operations/hidden
+  def hidden
+    render json: @operations.includes(:slots).hidden.order(start: :asc)
   end
 
   # GET /operations/1

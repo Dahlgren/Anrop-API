@@ -17,12 +17,23 @@ describe Operations::OperationsController do
 
     describe "GET upcoming" do
       before(:each) do
+        @hidden_operation = create(:operation, hidden: true)
         @old_operation = create(:operation, start: DateTime.now.yesterday)
       end
 
       it "returns upcoming operations" do
         get :upcoming
         expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@operation]).to_json)
+      end
+    end
+
+    describe "GET hidden" do
+      before(:each) do
+        @hidden_operation = create(:operation, hidden: true)
+      end
+
+      it "returns hidden operations as unauthorized" do
+        expect{get :hidden}.to raise_error(CanCan::AccessDenied)
       end
     end
 
@@ -36,10 +47,10 @@ describe Operations::OperationsController do
 
   describe "operation maker" do
     before(:each) do
-      author = create(:user, :operation_maker)
-      set_current_user(author)
+      @author = create(:user, :operation_maker)
+      set_current_user(@author)
 
-      @operation = create(:operation, author_id: author.id)
+      @operation = create(:operation, author_id: @author.id)
     end
 
     describe "GET index" do
@@ -51,12 +62,24 @@ describe Operations::OperationsController do
 
     describe "GET upcoming" do
       before(:each) do
+        @hidden_operation = create(:operation, hidden: true)
         @old_operation = create(:operation, start: DateTime.now.yesterday)
       end
 
       it "returns upcoming operations" do
         get :upcoming
         expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@operation]).to_json)
+      end
+    end
+
+    describe "GET hidden" do
+      before(:each) do
+        @hidden_operation = create(:operation, author_id: @author.id, hidden: true)
+      end
+
+      it "returns hidden operations" do
+        get :hidden
+        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@hidden_operation]).to_json)
       end
     end
 
