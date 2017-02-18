@@ -44,7 +44,11 @@ class Operations::Operation < ApplicationRecord
   end
 
   def participating?(user)
-    return self.slots.where(user: user).size > 0 if user
+    if (self.slots.loaded?)
+      return self.slots.select{|slot| slot.user_id == user.id}.size > 0 if user
+    else
+      return self.slots.where(user_id: user.id).size > 0 if user
+    end
     false
   end
 end
