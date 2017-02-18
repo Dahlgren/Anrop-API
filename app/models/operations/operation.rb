@@ -19,6 +19,8 @@ class Operations::Operation < ApplicationRecord
   before_save :fix_start, if: ->(obj){ obj.start.present? and obj.start_changed? }
 
   default_scope { includes(:author) }
+  scope :hidden, -> { where(hidden: true) }
+  scope :published, -> { where(hidden: false) }
   scope :upcoming, -> { where('operation_datetime >= ?', DateTime.now.beginning_of_day) }
 
   def set_updated_at
