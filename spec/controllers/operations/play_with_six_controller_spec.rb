@@ -12,14 +12,14 @@ describe Operations::PlayWithSixController do
   describe "GET index" do
     it "returns PWS items" do
       get :index, params: { operation_id: @operation.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@pws]).to_json)
+      compare_response_body_with_model response, [@pws]
     end
   end
 
   describe "GET show" do
     it "returns PWS item" do
       get :show, params: { operation_id: @operation.id, id: @pws.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@pws).to_json)
+      compare_response_body_with_model response, @pws
     end
   end
 
@@ -41,7 +41,7 @@ describe Operations::PlayWithSixController do
       @pws.name = "New Name"
       patch :update, params: { operation_id: @operation.id, id: @pws.id, play_with_six: { name: @pws.name } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@pws).to_json)
+      compare_response_body_with_model response, @pws
     end
   end
 

@@ -4,7 +4,7 @@ describe Operations::GroupsController do
   before(:each) do
     author = create(:user, :operation_maker)
     set_current_user(author)
-    
+
     @operation = create(:operation, author_id: author.id)
     @group = create(:group, operation_id: @operation.id)
   end
@@ -12,14 +12,14 @@ describe Operations::GroupsController do
   describe "GET index" do
     it "returns groups" do
       get :index, params: { operation_id: @operation.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@group]).to_json)
+      compare_response_body_with_model response, [@group]
     end
   end
 
   describe "GET show" do
     it "returns group" do
       get :show, params: { operation_id: @operation.id, id: @group.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@group).to_json)
+      compare_response_body_with_model response, @group
     end
   end
 
@@ -41,14 +41,14 @@ describe Operations::GroupsController do
       @group.name = "New Name"
       patch :update, params: { operation_id: @operation.id, id: @group.id, group: { name: @group.name } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@group).to_json)
+      compare_response_body_with_model response, @group
     end
 
     it "updates group with new order" do
       @group.order = -1
       patch :update, params: { operation_id: @operation.id, id: @group.id, group: { order: -1 } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@group).to_json)
+      compare_response_body_with_model response, @group
     end
   end
 

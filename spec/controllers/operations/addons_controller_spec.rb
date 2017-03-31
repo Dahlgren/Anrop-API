@@ -12,14 +12,14 @@ describe Operations::AddonsController do
   describe "GET index" do
     it "returns addons" do
       get :index, params: { operation_id: @operation.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@addon]).to_json)
+      compare_response_body_with_model response, [@addon]
     end
   end
 
   describe "GET show" do
     it "returns addon" do
       get :show, params: { operation_id: @operation.id, id: @addon.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@addon).to_json)
+      compare_response_body_with_model response, @addon
     end
   end
 
@@ -41,14 +41,14 @@ describe Operations::AddonsController do
       @addon.name = "New Name"
       patch :update, params: { operation_id: @operation.id, id: @addon.id, addon: { name: @addon.name } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@addon).to_json)
+      compare_response_body_with_model response, @addon
     end
 
     it "updates addon with new url" do
       @addon.url = "New Addon Url"
       patch :update, params: { operation_id: @operation.id, id: @addon.id, addon: { url: @addon.url } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@addon).to_json)
+      compare_response_body_with_model response, @addon
     end
   end
 

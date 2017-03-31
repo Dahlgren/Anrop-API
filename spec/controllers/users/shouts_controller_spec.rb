@@ -11,7 +11,7 @@ describe Users::ShoutsController do
   describe "GET index" do
     it "returns shouts" do
       get :index, params: { user_id: @user.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@shout]).to_json)
+      compare_response_body_with_model response, [@shout]
     end
   end
 end
