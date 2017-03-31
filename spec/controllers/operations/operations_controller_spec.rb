@@ -11,7 +11,7 @@ describe Operations::OperationsController do
     describe "GET index" do
       it "returns operations" do
         get :index
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@operation]).to_json)
+        compare_response_body_with_model response, [@operation]
       end
     end
 
@@ -23,7 +23,7 @@ describe Operations::OperationsController do
 
       it "returns upcoming operations" do
         get :upcoming
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@operation]).to_json)
+        compare_response_body_with_model response, [@operation]
       end
     end
 
@@ -40,7 +40,7 @@ describe Operations::OperationsController do
     describe "GET show" do
       it "returns operation" do
         get :show, params: { id: @operation.id }
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
     end
   end
@@ -56,7 +56,7 @@ describe Operations::OperationsController do
     describe "GET index" do
       it "returns operations" do
         get :index
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@operation]).to_json)
+        compare_response_body_with_model response, [@operation]
       end
     end
 
@@ -68,7 +68,7 @@ describe Operations::OperationsController do
 
       it "returns upcoming operations" do
         get :upcoming
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@operation]).to_json)
+        compare_response_body_with_model response, [@operation]
       end
     end
 
@@ -79,14 +79,14 @@ describe Operations::OperationsController do
 
       it "returns hidden operations" do
         get :hidden
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@hidden_operation]).to_json)
+        compare_response_body_with_model response, [@hidden_operation]
       end
     end
 
     describe "GET show" do
       it "returns operation" do
         get :show, params: { id: @operation.id }
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
     end
 
@@ -110,21 +110,21 @@ describe Operations::OperationsController do
         @operation.title = "New Title"
         patch :update, params: { id: @operation.id, operation: { title: @operation.title } }
         expect(response.status).to eq(200)
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
 
       it "updates operation with new text" do
         @operation.text = "New Text"
         patch :update, params: { id: @operation.id, operation: { text: @operation.text } }
         expect(response.status).to eq(200)
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
 
       it "updates operation with new image" do
         @operation.image = "http://anrop.se/example.png"
         patch :update, params: { id: @operation.id, operation: { image: @operation.image } }
         expect(response.status).to eq(200)
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
 
       it "updates operation with new start" do
@@ -134,7 +134,7 @@ describe Operations::OperationsController do
         operation.start = new_start
         patch :update, params: { id: @operation.id, operation: { start: new_start } }
         expect(response.status).to eq(200)
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
 
       it "updates operation with new hidden" do
@@ -142,7 +142,7 @@ describe Operations::OperationsController do
         @operation.hidden = true
         patch :update, params: { id: @operation.id, operation: { hidden: @operation.hidden } }
         expect(response.status).to eq(200)
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
 
       it "updates operation with new locked" do
@@ -150,7 +150,7 @@ describe Operations::OperationsController do
         @operation.locked = true
         patch :update, params: { id: @operation.id, operation: { locked: @operation.locked } }
         expect(response.status).to eq(200)
-        expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@operation).to_json)
+        compare_response_body_with_model response, @operation
       end
     end
 

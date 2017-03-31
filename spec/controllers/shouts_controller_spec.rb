@@ -11,14 +11,14 @@ describe ShoutsController do
   describe "GET index" do
     it "returns shouts" do
       get :index
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@shout]).to_json)
+      compare_response_body_with_model response, [@shout]
     end
   end
 
   describe "GET show" do
     it "returns shout" do
       get :show, params: { id: @shout.id }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@shout).to_json)
+      compare_response_body_with_model response, @shout
     end
   end
 
@@ -51,7 +51,7 @@ describe ShoutsController do
       @shout.message = "New Message"
       patch :update, params: { id: @shout.id, shout: { message: @shout.message } }
       expect(response.status).to eq(200)
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(@shout).to_json)
+      compare_response_body_with_model response, @shout
     end
   end
 

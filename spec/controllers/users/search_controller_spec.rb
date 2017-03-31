@@ -9,7 +9,7 @@ describe Users::SearchController do
   describe "GET index" do
     it "returns users" do
       get :index, params: { q: 'this' }
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new([@user]).to_json)
+      compare_response_body_with_model response, [@user]
     end
   end
 end

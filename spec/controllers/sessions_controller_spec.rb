@@ -20,7 +20,7 @@ describe SessionsController do
       set_current_user(@user)
 
       get :index
-      expect(response.body).to eq(ActiveModelSerializers::SerializableResource.new(session).to_json)
+      compare_response_body_with_model response, session
     end
 
     it "returns failure when not logged in" do
