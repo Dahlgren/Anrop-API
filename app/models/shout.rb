@@ -7,7 +7,7 @@ class Shout < ApplicationRecord
   alias_attribute :created_at, :shout_datestamp
   alias_attribute :user_id, :shout_name
 
-  belongs_to :user, class_name: 'User', foreign_key: 'shout_name'
+  belongs_to :user, class_name: 'User', foreign_key: 'shout_name', optional: true
 
   before_save :set_created_at
 

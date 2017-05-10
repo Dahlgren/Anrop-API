@@ -8,7 +8,7 @@ class Operations::Slot < ApplicationRecord
 
   belongs_to :group
   has_one :operation, through: :group
-  belongs_to :user
+  belongs_to :user, optional: true
 
   before_save :default_values
   before_save :set_updated_at

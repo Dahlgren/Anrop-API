@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.2'
+gem 'rails', '5.1.0'
 # Use mysql2 as the database for Active Record
 gem 'mysql2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -24,7 +24,7 @@ group :development, :test do
   gem 'byebug'
 
   # rspec for testing
-  gem 'rspec-rails', '3.5.2'
+  gem 'rspec-rails', '3.6.0'
 
   # factory girl for generating models during testing
   gem 'factory_girl_rails', '4.8.0'
@@ -42,11 +42,11 @@ end
 
 group :test do
   # Clean database between each test
-  gem 'database_cleaner', '1.5.3'
+  gem 'database_cleaner', '1.6.1'
 end
 
 # ActiveModel serialization
-gem 'active_model_serializers', '0.10.5'
+gem 'active_model_serializers', '0.10.6'
 
 # CanCanCan for Authorization
 gem 'cancancan', '1.16.0'
