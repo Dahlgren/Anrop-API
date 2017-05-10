@@ -43,11 +43,6 @@ group :production do
   gem 'newrelic_rpm'
 end
 
-group :test do
-  # Clean database between each test
-  gem 'database_cleaner', '1.6.1'
-end
-
 # ActiveModel serialization
 gem 'active_model_serializers', '0.10.6'
 
