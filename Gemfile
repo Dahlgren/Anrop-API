@@ -36,6 +36,11 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # A Ruby static code analyzer, based on the community Ruby style guide
+  gem 'rubocop', '0.49.0'
+  gem 'rubocop-rails', '0.4.0'
+  gem 'rubocop-rspec', '1.15.1'
 end
 
 group :production do
