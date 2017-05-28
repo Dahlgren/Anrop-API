@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
       resources :addons
       resources :groups do
+        post 'clone', controller: 'clone_group'
         resources :slots
       end
       resources :play_with_six
