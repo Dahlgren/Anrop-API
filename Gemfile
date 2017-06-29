@@ -47,7 +47,7 @@ end
 gem 'active_model_serializers', '0.10.6'
 
 # CanCanCan for Authorization
-gem 'cancancan', '1.16.0'
+gem 'cancancan', '2.0.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
