@@ -50,6 +50,8 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
+    deep_cloneable (2.3.0)
+      activerecord (>= 3.1.0, < 5.2.0)
     diff-lcs (1.3)
     erubi (1.6.1)
     factory_girl (4.8.0)
@@ -155,6 +157,7 @@ DEPENDENCIES
   active_model_serializers (= 0.10.6)
   byebug
   cancancan (= 2.0.0)
+  deep_cloneable (= 2.3.0)
   factory_girl_rails (= 4.8.0)
   listen
   mysql2
