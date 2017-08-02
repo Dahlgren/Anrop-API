@@ -6,4 +6,4 @@ ADD Gemfile /anrop/Gemfile
 ADD Gemfile.lock /anrop/Gemfile.lock
 RUN bundle install -j4
 ADD . /anrop
-CMD ["rails","server","-b","0.0.0.0"]
+CMD rm -f tmp/pids/server.pid && rails server -b '0.0.0.0'
