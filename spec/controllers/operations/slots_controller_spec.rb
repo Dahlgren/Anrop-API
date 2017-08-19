@@ -34,7 +34,7 @@ describe Operations::SlotsController do
       expect(created_slot["operation_id"]).to eq(@operation.id)
       expect(created_slot["group_id"]).to eq(@group.id)
       expect(created_slot["name"]).to eq(new_slot[:name])
-      expect(created_slot["url"]).to eq(new_slot[:url])
+      expect(created_slot["locked"]).to eq(new_slot[:locked])
     end
   end
 
@@ -42,6 +42,13 @@ describe Operations::SlotsController do
     it "updates slot with new name" do
       @slot.name = "New Name"
       patch :update, params: { operation_id: @operation.id, group_id: @group.id, id: @slot.id, slot: { name: @slot.name } }
+      expect(response.status).to eq(200)
+      compare_response_body_with_model response, @slot
+    end
+
+    it "updates slot with new locked state" do
+      @slot.locked = true
+      patch :update, params: { operation_id: @operation.id, group_id: @group.id, id: @slot.id, slot: { locked: @slot.locked } }
       expect(response.status).to eq(200)
       compare_response_body_with_model response, @slot
     end

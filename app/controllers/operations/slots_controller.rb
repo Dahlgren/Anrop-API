@@ -43,6 +43,7 @@ class Operations::SlotsController < ApplicationController
     def slot_params
       params.require(:slot).permit(
         :name,
+        :locked,
         :order,
         :user_id,
       )

@@ -3,6 +3,7 @@ class Operations::Slot < ApplicationRecord
 
   alias_attribute :id, :slot_id
   alias_attribute :name, :slot_title
+  alias_attribute :locked, :slot_locked
   alias_attribute :order, :slot_order
   alias_attribute :updated_at, :slot_updated_at
 

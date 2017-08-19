@@ -366,6 +366,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "group_id", null: false, unsigned: true
     t.string "slot_title", limit: 150, default: "", null: false
     t.integer "user_id", unsigned: true
+    t.boolean "slot_locked", default: false, null: false, unsigned: true
     t.integer "slot_order", null: false
     t.timestamp "slot_updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["group_id"], name: "group_id"
