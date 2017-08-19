@@ -11,14 +11,9 @@ class Operations::Slot < ApplicationRecord
   has_one :operation, through: :group
   belongs_to :user, optional: true
 
-  before_save :default_values
   before_save :set_updated_at
 
   default_scope { includes(:user) }
-
-  def default_values
-    self.order ||= 0
-  end
 
   def set_updated_at
     self.updated_at = utc_to_local(Time.now.utc)

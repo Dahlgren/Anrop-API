@@ -9,12 +9,7 @@ class Operations::Group < ApplicationRecord
   belongs_to :operation
   has_many :slots
 
-  before_save :default_values
   before_save :set_updated_at
-
-  def default_values
-    self.order ||= 0
-  end
 
   def set_updated_at
     self.updated_at = utc_to_local(Time.now.utc)

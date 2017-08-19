@@ -350,7 +350,7 @@ ActiveRecord::Schema.define(version: 0) do
   create_table "fusion7_operations_groups", primary_key: "group_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "operation_id", null: false, unsigned: true
     t.string "group_title", limit: 150, default: "", null: false
-    t.integer "group_order", null: false
+    t.integer "group_order", default: 0, null: false
     t.timestamp "group_updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["operation_id"], name: "operation_id"
   end
@@ -367,7 +367,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string "slot_title", limit: 150, default: "", null: false
     t.integer "user_id", unsigned: true
     t.boolean "slot_locked", default: false, null: false, unsigned: true
-    t.integer "slot_order", null: false
+    t.integer "slot_order", default: 0, null: false
     t.timestamp "slot_updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["group_id"], name: "group_id"
   end
