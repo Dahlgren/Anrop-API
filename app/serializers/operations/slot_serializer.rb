@@ -8,10 +8,6 @@ class Operations::SlotSerializer < ActiveModel::Serializer
 
   belongs_to :user
 
-  def locked
-    object.locked == 1
-  end
-
   def operation_id
     object.group.operation.id
   end
