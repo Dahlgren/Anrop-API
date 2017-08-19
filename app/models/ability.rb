@@ -15,6 +15,7 @@ class Ability
     can :read, Operations::Group, operation: { operation_hidden: 0 }
     can :read, Operations::PlayWithSix, operation: { operation_hidden: 0 }
     can :read, Operations::Slot, operation: { operation_hidden: 0 }
+    can :read, Operations::SteamWorkshop, operation: { operation_hidden: 0 }
 
     if user
       can :create, Operations::Operation if user.has_role?(:operations)
@@ -35,6 +36,9 @@ class Ability
 
       can :manage, Operations::Slot, operation: { operation_author: user.id }
       can :manage, Operations::Slot if user.superadmin?
+
+      can :manage, Operations::SteamWorkshop, operation: { operation_author: user.id }
+      can :manage, Operations::SteamWorkshop if user.superadmin?
     end
   end
 
