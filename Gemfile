@@ -24,10 +24,10 @@ group :development, :test do
   gem 'byebug'
 
   # rspec for testing
-  gem 'rspec-rails', '3.6.1'
+  gem 'rspec-rails', '3.7.2'
 
   # factory girl for generating models during testing
-  gem 'factory_girl_rails', '4.8.0'
+  gem 'factory_girl_rails', '4.9.0'
 end
 
 group :development do
@@ -44,13 +44,13 @@ group :production do
 end
 
 # ActiveModel serialization
-gem 'active_model_serializers', '0.10.6'
+gem 'active_model_serializers', '0.10.7'
 
 # CanCanCan for Authorization
-gem 'cancancan', '2.0.0'
+gem 'cancancan', '2.1.2'
 
 # Clone ActiveModel objects with relations
-gem 'deep_cloneable', '2.3.0'
+gem 'deep_cloneable', '2.3.1'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
