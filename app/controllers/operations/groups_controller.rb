@@ -14,6 +14,10 @@ class Operations::GroupsController < ApplicationController
 
   # POST /groups
   def create
+    unless params[:group].has_key?(:order)
+      @group.order = @operation.groups.size - 1
+    end
+
     if @group.save
       render json: @group, status: :created
     else

@@ -26,12 +26,27 @@ describe Operations::GroupsController do
   describe "POST create" do
     it "creates group" do
       new_group = attributes_for(:group)
+      new_order = @operation.groups.size
       post :create, params: { operation_id: @operation.id, group: new_group }
       expect(response.status).to eq(201)
 
       created_group = JSON.parse(response.body)
       expect(created_group["operation_id"]).to eq(@operation.id)
       expect(created_group["name"]).to eq(new_group[:name])
+      expect(created_group["order"]).to eq(new_order)
+      expect(created_group["url"]).to eq(new_group[:url])
+    end
+
+    it "creates group with manual order" do
+      new_group = attributes_for(:group)
+      new_group[:order] = @operation.groups.size + 1
+      post :create, params: { operation_id: @operation.id, group: new_group }
+      expect(response.status).to eq(201)
+
+      created_group = JSON.parse(response.body)
+      expect(created_group["operation_id"]).to eq(@operation.id)
+      expect(created_group["name"]).to eq(new_group[:name])
+      expect(created_group["order"]).to eq(new_group[:order])
       expect(created_group["url"]).to eq(new_group[:url])
     end
   end
