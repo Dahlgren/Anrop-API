@@ -689,10 +689,13 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "user_actiontime", default: 0, null: false, unsigned: true
     t.string "user_arma2_id", limit: 20, default: "", null: false
     t.string "user_arma2_nick", limit: 50, default: "", null: false
-    t.string "user_bf3", limit: 50, default: "", null: false
     t.string "user_arma3_id", limit: 20, default: "", null: false
     t.string "user_arma3_nick", limit: 50, default: "", null: false
     t.string "user_twitch"
+    t.string "user_arma1_id", limit: 50, default: "", null: false
+    t.string "user_arma1_nick", limit: 50, default: "", null: false
+    t.string "user_ofp_id", limit: 50, default: "", null: false
+    t.string "user_ofp_nick", limit: 50, default: "", null: false
     t.index ["user_joined"], name: "user_joined"
     t.index ["user_lastvisit"], name: "user_lastvisit"
     t.index ["user_name"], name: "user_name"
