@@ -339,6 +339,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.timestamp "operation_updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
+  create_table "fusion7_operations_aar", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "operation_id", null: false, unsigned: true
+    t.integer "aar_id", null: false, unsigned: true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.index ["operation_id"], name: "operation_id"
+  end
+
   create_table "fusion7_operations_addons", primary_key: "addon_id", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "operation_id", null: false, unsigned: true
     t.string "addon_name", limit: 200
