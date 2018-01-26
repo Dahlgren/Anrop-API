@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :operation, class: Operations::Operation  do
     sequence(:title) { |n| "Operation_#{n}" }
     text 'Awesome Operation'

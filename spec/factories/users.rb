@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     sequence(:user_name) { |n| "User_#{n}" }
     user_email { "#{user_name}@anrop.se".downcase }
