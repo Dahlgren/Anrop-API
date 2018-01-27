@@ -380,6 +380,14 @@ ActiveRecord::Schema.define(version: 0) do
     t.index ["group_id"], name: "group_id"
   end
 
+  create_table "fusion7_operations_steam_workshop", id: :integer, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.integer "operation_id", null: false, unsigned: true
+    t.integer "steam_workshop_id", null: false, unsigned: true
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.index ["operation_id"], name: "operation_id"
+  end
+
   create_table "fusion7_panels", primary_key: "panel_id", id: :integer, limit: 3, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "panel_name", limit: 100, default: "", null: false
     t.string "panel_filename", limit: 100, default: "", null: false

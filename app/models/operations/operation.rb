@@ -15,6 +15,7 @@ class Operations::Operation < ApplicationRecord
   has_many :groups
   has_many :play_with_sixes
   has_many :slots, through: :groups
+  has_many :steam_workshops
 
   before_save :set_updated_at
   before_save :fix_start, if: ->(obj){ obj.start.present? and obj.start_changed? }

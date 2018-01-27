@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         resources :slots
       end
       resources :play_with_six
+      resources :steam_workshop
     end
   end
 
