@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :hidden, on: :collection
       get :upcoming, on: :collection
 
+      resources :aar
       resources :addons
       resources :groups do
         post 'clone', controller: 'clone_group'

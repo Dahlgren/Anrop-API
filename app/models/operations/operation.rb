@@ -10,6 +10,7 @@ class Operations::Operation < ApplicationRecord
   alias_attribute :updated_at, :operation_updated_at
 
   belongs_to :author, class_name: 'User', foreign_key: 'operation_author'
+  has_many :aars
   has_many :addons
   has_many :groups
   has_many :play_with_sixes

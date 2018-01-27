@@ -10,6 +10,7 @@ class Ability
   def operations(user)
     can :read, Operations::Operation, hidden: 0
     can :upcoming, Operations::Operation, hidden: 0
+    can :read, Operations::Aar, operation: { operation_hidden: 0 }
     can :read, Operations::Addon, operation: { operation_hidden: 0 }
     can :read, Operations::Group, operation: { operation_hidden: 0 }
     can :read, Operations::PlayWithSix, operation: { operation_hidden: 0 }
@@ -19,6 +20,9 @@ class Ability
       can :create, Operations::Operation if user.has_role?(:operations)
       can :manage, Operations::Operation, operation_author: user.id
       can :manage, Operations::Operation if user.superadmin?
+
+      can :manage, Operations::Aar, operation: { operation_author: user.id }
+      can :manage, Operations::Aar if user.superadmin?
 
       can :manage, Operations::Addon, operation: { operation_author: user.id }
       can :manage, Operations::Addon if user.superadmin?
