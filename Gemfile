@@ -47,7 +47,7 @@ end
 gem 'active_model_serializers', '0.10.7'
 
 # CanCanCan for Authorization
-gem 'cancancan', '2.1.2'
+gem 'cancancan', '2.1.3'
 
 # Clone ActiveModel objects with relations
 gem 'deep_cloneable', '2.3.1'
