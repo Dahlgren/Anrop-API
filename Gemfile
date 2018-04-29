@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 ruby '2.3.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.5'
+gem 'rails', '5.2.0'
 # Use mysql2 as the database for Active Record
-gem 'mysql2', '< 0.5'
+gem 'mysql2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.0'
 # Use Puma as the app server
@@ -15,6 +15,9 @@ gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
@@ -47,10 +50,10 @@ end
 gem 'active_model_serializers', '0.10.7'
 
 # CanCanCan for Authorization
-gem 'cancancan', '2.1.3'
+gem 'cancancan', '2.2.0'
 
 # Clone ActiveModel objects with relations
-gem 'deep_cloneable', '2.3.1'
+gem 'deep_cloneable', '2.3.2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
