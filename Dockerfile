@@ -1,5 +1,5 @@
-FROM ruby:2.3.4
-RUN apt-get update -qq && apt-get install -y build-essential mysql-client
+FROM ruby:2.6.4
+RUN apt-get update -qq && apt-get install -y build-essential libmariadb-dev
 RUN mkdir /anrop
 WORKDIR /anrop
 ADD Gemfile /anrop/Gemfile
