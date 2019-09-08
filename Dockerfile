@@ -1,5 +1,5 @@
 FROM ruby:2.6.4-alpine
-RUN apk --no-cache add build-base mysql-dev
+RUN apk --no-cache add build-base mysql-dev tzdata
 RUN mkdir /anrop
 WORKDIR /anrop
 ADD Gemfile /anrop/Gemfile
