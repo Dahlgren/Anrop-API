@@ -1,4 +1,4 @@
-FROM ruby:2.6.7-alpine
+FROM ruby:2.7.8-alpine
 RUN apk --no-cache add build-base mysql-dev tzdata
 RUN mkdir /anrop
 WORKDIR /anrop
