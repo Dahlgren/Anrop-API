@@ -30,7 +30,7 @@ group :development, :test do
   gem 'rspec-rails', '3.9.1'
 
   # factory bot for generating models during testing
-  gem 'factory_bot_rails', '6.1.0'
+  gem 'factory_bot_rails', '6.4.3'
 end
 
 group :development do
