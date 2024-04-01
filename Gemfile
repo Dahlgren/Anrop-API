@@ -27,7 +27,7 @@ group :development, :test do
   gem 'byebug'
 
   # rspec for testing
-  gem 'rspec-rails', '3.9.1'
+  gem 'rspec-rails', '5.1.2'
 
   # factory bot for generating models during testing
   gem 'factory_bot_rails', '6.4.3'
